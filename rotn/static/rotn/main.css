@@ -1,0 +1,52 @@
+.main {
+  padding:14px 28px;
+}
+
+.title {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 20px;
+}
+
+.input {
+  float: left;
+  width: 50%;
+}
+p {
+  margin-left: 5px;
+}
+
+.output{
+  float: right;
+  width: 50%;
+  border: 1px solid #ccc;
+  background: whitesmoke;
+  height: 140px;
+}
+
+.input textarea {
+  width: 65%;
+}
+#number {
+  width: 40px;
+  margin-left: 10px;
+}
+.input .choice {
+  display: inline;
+  float: right;
+  position: absolute;
+}
+#result {
+  font-style: italic;
+  overflow: auto;
+  position: relative;
+  word-wrap: break-word;
+}
+#chart_div {
+  display: table;
+}
+
+#possible-answer {
+  font-size: 20px;
+  text-align: center;
+}
+
