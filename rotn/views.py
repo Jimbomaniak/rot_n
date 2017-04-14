@@ -10,8 +10,9 @@ def main(request):
     return render(request, 'rotn/main.html')
 
 
+# Main function return JSON to ajax
 def result_cipher(request):
-    response_data ={}
+    response_data = {}
     message = request.POST.get('message')
     message = remove_punct_marks(message)
     rot_number = int(request.POST.get('rot_number'))
@@ -23,7 +24,7 @@ def result_cipher(request):
     return JsonResponse(response_data)
 
 
-# Rotate Number function
+# Rotate letters function
 def rot_n(msg, n, reverse=False):
     lower1 = str.maketrans(lower, lower[n:] + lower[:n])
     upper1 = str.maketrans(upper, upper[n:] + upper[:n])
@@ -33,10 +34,10 @@ def rot_n(msg, n, reverse=False):
     return msg.translate(lower1).translate(upper1)
 
 letter_statistic = dict(zip(upper,
-                        [.0817,.0149,.0278,.0425,.1270,.0223,.0202,
-                         .0609,.0697,.0015,.0077,.0402,.0241,.0675,
-                         .0751,.0193,.0009,.0599,.0633,.0906,.0276,
-                         .0098,.0236,.0015,.0197,.0007]))
+                        [.0817, .0149, .0278, .0425, .1270, .0223, .0202,
+                         .0609, .0697, .0015, .0077, .0402, .0241, .0675,
+                         .0751, .0193, .0009, .0599, .0633, .0906, .0276,
+                         .0098, .0236, .0015, .0197, .0007]))
 
 variation_tables = [str.maketrans(upper, upper[i:]+upper[:i]) for i in range(26)]
 
@@ -52,12 +53,13 @@ def all_shifts(msg):
         yield goodness(txt), '{}{}'.format(txt[0], txt[1:].lower())
 
 
+# Function for chart graphic
 def freq(msg):
     data = []
     for c, n in sorted(Counter(msg.replace(' ', '')).items()):
         percent = round(n/len(msg), 4)
-        data +=[[c, percent]]
-    return sorted(data, key=lambda i : i[0])
+        data += [[c, percent]]
+    return sorted(data, key=lambda i: i[0])
 
 
 def remove_punct_marks(msg):
